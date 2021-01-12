@@ -17,6 +17,20 @@ const token =
 const token2 =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmZkNzMxOWRkMWQwMjAwMTc1Y2QxOWEiLCJpYXQiOjE2MTA0NDU1OTN9.XgthA6bCq0fOxYZrk0f9fLimH1uT0_Xav-eLnTBfMxE";
 
+const newToken = "";
+
+const setToken = (loadedToken) => {
+  newToken = loadedToken;
+};
+
+// Пример сохранения токена
+//
+// .then(data => {
+// settoken(token.data);
+// return data;
+// });
+////////////////////////
+
 // const newUser = {
 //   name: "user",
 //   password: "1234567",
@@ -29,33 +43,8 @@ const user = {
   number: "",
 };
 
-// const options = {
-//   method: "POST",
-//   body: JSON.stringify(newUser),
-//   headers: {
-//     "Content-Type": "application/json; charset=UTF-8",
-//   },
-// };
-
 const headers = {
   Authorization: `Bearer ${token2}`,
-};
-
-const createContact = (user) => {
-  const options = {
-    method: "POST",
-    body: JSON.stringify(user),
-    headers: {
-      Authorization: `Bearer ${token2}`,
-      "Content-Type": "application/json; charset=UTF-8",
-    },
-  };
-  return fetch(`https://goit-phonebook-api.herokuapp.com/contacts`, options)
-    .then((res) => res.json())
-    .then((contacts) => {
-      console.log;
-      fetchContact();
-    });
 };
 
 refs.createUserBtn.addEventListener("click", (e) => {
@@ -79,15 +68,37 @@ refs.getItemList.addEventListener("click", (e) => {
   if (e.target.nodeName === "BUTTON") {
     refs.getItemList.innerHTML = "";
     deleteId = e.target.dataset.id;
-    deleteContact(deleteId);
-    getContacts().then((contacts) => {
-      let array = [...contacts];
-      //   allContacts.push(...array);
 
-      getMarkup(array, contacts);
-    });
+    deleteContact(deleteId);
+
+    setTimeout(() => {
+      console.log("timeout");
+      getContacts().then((contacts) => {
+        let array = [...contacts];
+
+        getMarkup(array, contacts);
+      });
+    }, 200);
   }
 });
+
+const createContact = (user) => {
+  const options = {
+    method: "POST",
+    body: JSON.stringify(user),
+    headers: {
+      Authorization: `Bearer ${token2}`,
+      "Content-Type": "application/json; charset=UTF-8",
+    },
+  };
+  return fetch(`https://goit-phonebook-api.herokuapp.com/contacts`, options)
+    .then((res) => res.json())
+    .then((contacts) => {
+      console.log;
+      fetchContact();
+    });
+};
+
 const deleteContact = (id) => {
   const headers = {
     method: "DELETE",
@@ -107,7 +118,7 @@ const fetchContact = () => {
 
   getContacts().then((contacts) => {
     let array = [...contacts];
-    // allContacts.push(...array);
+
     getMarkup(array, contacts);
   });
 };
@@ -118,9 +129,9 @@ const getContacts = () => {
   }).then((res) => res.json());
 };
 
-const getMarkup = (array, contacts) => {
+const getMarkup = (array) => {
   const markup = template(array);
-  refs.getItemList.insertAdjacentHTML("beforeend", markup);
+  refs.getItemList.innerHTML = markup;
 };
 
 fetchContact();
