@@ -16,5 +16,56 @@ body {
   /*
    * CSS image reference example.
    */
-  background-image: url("./images/bg-pattern.png");
+  /* background-image: url("./images/bg-pattern.png"); */
+}
+li {
+  list-style: none;
+}
+.container {
+  width: 1200px;
+  margin: 0 auto;
+}
+.phonebook-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 320px;
+  border: solid 1px;
+  border-color: rgb(43, 207, 166);
+  padding-left: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 15px;
+  background-color: rgb(226, 226, 226);
+  margin: 5px;
+}
+.phonebook-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding-left: 0;
+  margin: -5px;
+}
+.phonebook-list-contact {
+  padding-left: 0;
+}
+.form-create {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.form-create-name {
+  margin-right: 10px;
+}
+.form-create-number {
+  margin-right: 10px;
+}
+.phonebook__list-item-btn-delete {
+  display: flex;
+  align-items: center;
+
+  justify-content: flex-end;
 }

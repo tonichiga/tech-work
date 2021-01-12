@@ -15,21 +15,11 @@
     <main>
       <div class="container">
         <div class="form-create">
-          <form>
-            <label for="name"
-              >Имя <input type="text" name="name" class="form-create-name" />
-            </label>
-            <label for=""
-              >Телефон
-              <input
-                type="numbertext"
-                name="number"
-                class="form-create-number"
-              />
-            </label>
-            <button type="submit" class="create-btn">Отправить</button>
-          </form>
+          <input type="text" name="name" class="form-create-name" />
+          <input type="number" name="number" class="form-create-number" />
+          <button type="submit" class="create-btn">Отправить</button>
         </div>
+
         <div class="form" hidden>
           <form action="#">
             <p class="main-form">Логин</p>
@@ -40,6 +30,7 @@
             <button type="button" class="main-btn-login">Войти</button>
           </form>
         </div>
+
         <div class="phonebook">
           <ul class="phonebook-list"></ul>
         </div>
